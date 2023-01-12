@@ -6,9 +6,10 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+      🚧 Building... 🚧
         <img src={logo} className="App-logo" alt="logo" />
 
-        🚧 This page is still being built 🚧
+       Sorry, come back late.
       </header>
     </div>
   );
