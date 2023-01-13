@@ -9,8 +9,16 @@ import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
 import Month, { MonthInfo } from './month';
 
 function App() {
+  const params = new URLSearchParams(window.location.search);
+  const s = params.get('s');
+  let fromQuery;
+  if (s) {
+    const base = s.split('-');
+    if (base.length > 1) return;
+    fromQuery = base[1] + '/' + base[0] + '/' + new Date().getFullYear();
+  }
   const [start, setStart] = React.useState<Dayjs | null>(
-    dayjs(),
+    dayjs(fromQuery),
   );
 
   const handleChange = (newValue: Dayjs | null) => {
@@ -28,7 +36,7 @@ function App() {
     let month = start?.month();
     const currentDay = start?.date() || 0;
     for (let value = 1; value < currentDay; value++) {
-      days.push({isPast: true, value})
+      days.push({ isPast: true, value })
     }
     for (let i = 0; i <= 200; i++) {
       if (month !== date?.month()) {
