@@ -14,8 +14,9 @@ function App() {
   let fromQuery;
   if (s) {
     const base = s.split('-');
-    if (base.length > 1) return;
-    fromQuery = base[1] + '/' + base[0] + '/' + new Date().getFullYear();
+    if (base.length > 1) {
+      fromQuery = base[1] + '/' + base[0] + '/' + new Date().getFullYear();
+    }
   }
   const [start, setStart] = React.useState<Dayjs | null>(
     dayjs(fromQuery),
